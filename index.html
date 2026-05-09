@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цифровая безопасность: защити свои данные</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Airfool&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Airfool';
+            src: local('Airfool'), url('https://fonts.googleapis.com/css2?family=Airfool&display=swap');
+            font-weight: 700;
+        }
+        @font-face {
+            font-family: 'Arkhit';
+            src: local('Arkhit'), local('Inter'), local('Arial');
+            font-weight: 400;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Arkhit', 'Inter', Arial, sans-serif;
+            background-color: #3B3B3B;
+            color: #FCFAFA;
+            font-size: 18px;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1, h2, h3 {
+            font-family: 'Airfool', 'Soyuz Grotesk', Arial, sans-serif;
+            color: #ECCACB;
+        }
+        h1 {
+            font-size: 40px;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+        h2 {
+            font-size: 32px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        h3 {
+            font-size: 24px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        p { margin-bottom: 15px; }
+        ul, ol { margin-left: 20px; margin-bottom: 20px; }
+        li { margin-bottom: 10px; }
+        .nav-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: flex-start;
+            margin: 30px 0;
+        }
+        .nav-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            transition: transform 0.2s, opacity 0.2s;
+            cursor: pointer;
+            object-fit: contain;
+        }
+        .nav-icon:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+        .nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #FCFAFA;
+            font-size: 12px;
+            gap: 5px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: inherit;
+        }
+        .btn-home {
+            display: inline-block;
+            background-color: #ECCACB;
+            color: #3B3B3B;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: opacity 0.2s;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+            font-size: 16px;
+        }
+        .btn-home:hover { opacity: 0.8; }
+        .screenshot {
+            max-width: 320px;
+            width: 100%;
+            border-radius: 12px;
+            margin: 15px 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .screenshots-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background-color: rgba(236, 202, 203, 0.1);
+            border-left: 4px solid #ECCACB;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .checklist {
+            background-color: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .checklist-item:hover { opacity: 0.9; }
+        .checklist-item.completed { opacity: 0.6; }
+        .checklist-item.completed .checkbox {
+            background: #ECCACB;
+            position: relative;
+        }
+        .checklist-item.completed .checkbox::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #3B3B3B;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #ECCACB;
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 3px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        th {
+            background-color: rgba(236, 202, 203, 0.2);
+            color: #ECCACB;
+            font-weight: 600;
+        }
+        tr:hover { background-color: rgba(255,255,255,0.05); }
+        .faq-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .faq-question {
+            font-weight: 600;
+            color: #ECCACB;
+            margin-bottom: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 24px;
+            transition: transform 0.3s;
+        }
+        .faq-item.open .faq-question::after {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 500px;
+        }
+        a { color: #ECCACB; text-decoration: underline; }
+        .source-link { display: block; margin-bottom: 8px; }
+        .hero-section {
+            text-align: center;
+            padding: 40px 0;
+        }
+        .hero-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        .step {
+            background-color: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border-left: 3px solid #ECCACB;
+            transition: border-color 0.3s, background 0.3s;
+        }
+        .step.active-step {
+            border-left-color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+        }
+        .step-number {
+            color: #ECCACB;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .step-toggle {
+            background: none;
+            border: 2px solid #ECCACB;
+            color: #ECCACB;
+            padding: 4px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        .step-toggle:hover {
+            background: #ECCACB;
+            color: #3B3B3B;
+        }
+        .step-toggle.done {
+            background: #4CAF50;
+            border-color: #4CAF50;
+            color: white;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #ECCACB;
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+        .progress-text {
+            text-align: center;
+            font-size: 14px;
+            color: #ECCACB;
+            margin-top: 5px;
+        }
+        .interactive-btn {
+            background: rgba(236, 202, 203, 0.2);
+            border: 2px solid #ECCACB;
+            color: #FCFAFA;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 16px;
+            transition: all 0.2s;
+            margin: 5px;
+        }
+        .interactive-btn:hover {
+            background: #ECCACB;
+            color: #3B3B3B;
+        }
+        .interactive-btn.selected {
+            background: #ECCACB;
+            color: #3B3B3B;
+        }
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            margin: 8px 0;
+        }
+        .quiz-feedback {
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+        }
+        .quiz-feedback.correct {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid #4CAF50;
+            display: block;
+        }
+        .quiz-feedback.wrong {
+            background: rgba(244, 67, 54, 0.2);
+            border: 1px solid #f44336;
+            display: block;
+        }
+
+        /* ===== СЛАЙДЕР ===== */
+        .slider-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .slider-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .slider-container {
+            width: 100%;
+            max-width: 900px;
+            height: 90vh;
+            background: #3B3B3B;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .slider-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 25px;
+            background: rgba(0,0,0,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .slider-title {
+            font-family: 'Airfool', 'Soyuz Grotesk', Arial, sans-serif;
+            color: #ECCACB;
+            font-size: 22px;
+        }
+        .slider-close {
+            background: none;
+            border: none;
+            color: #FCFAFA;
+            font-size: 28px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+        .slider-close:hover { background: rgba(255,255,255,0.1); }
+        .slider-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px 40px;
+            scroll-behavior: smooth;
+        }
+        .slider-content::-webkit-scrollbar { width: 8px; }
+        .slider-content::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+        }
+        .slider-content::-webkit-scrollbar-thumb {
+            background: #ECCACB;
+            border-radius: 4px;
+        }
+        .slider-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 15px 25px;
+            background: rgba(0,0,0,0.2);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .slider-arrow {
+            background: #ECCACB;
+            color: #3B3B3B;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s;
+        }
+        .slider-arrow:hover { opacity: 0.8; }
+        .slider-arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        .slider-dots {
+            display: flex;
+            gap: 8px;
+        }
+        .slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .slider-dot.active { background: #ECCACB; }
+        .slide {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        .slide.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide h1 {
+            font-size: 36px;
+            margin-bottom: 25px;
+        }
+        .slide h2 { font-size: 28px; }
+        .slide h3 { font-size: 22px; }
+
+        @media (max-width: 600px) {
+            h1, .slide h1 { font-size: 28px; }
+            h2, .slide h2 { font-size: 24px; }
+            body { font-size: 16px; }
+            .nav-icons { gap: 15px; }
+            .nav-icon { width: 36px; height: 36px; }
+            .slider-container { height: 95vh; border-radius: 0; }
+            .slider-content { padding: 20px; }
+            .slider-header { padding: 12px 15px; }
+            .slider-title { font-size: 18px; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Security" class="hero-icon">
+            <h1>Цифровая безопасность: защити свои данные</h1>
+            <p>Добро пожаловать на ресурс, посвящённый защите личных данных в социальных сетях. Здесь вы найдёте пошаговые инструкции, чек-листы и актуальные рекомендации по кибербезопасности для популярных платформ.</p>
+        </div>
+
+        <h2>Как пользоваться сайтом:</h2>
+        <ul>
+            <li>Выберите социальную сеть из списка ниже, чтобы получить индивидуальную инструкцию по защите аккаунта</li>
+            <li>Нажмите «Взломали аккаунт», если срочно нужно восстановить доступ</li>
+            <li>Используйте чек-листы для регулярного аудита безопасности</li>
+            <li>Загляните в Q&A, чтобы найти ответы на частые вопросы</li>
+        </ul>
+
+        <div class="warning-box">
+            <h3>⚠️ Взломали аккаунт. Что делать?</h3>
+            <p>Если ваш аккаунт был взломан — действуйте немедленно! Откройте экстренное восстановление доступа.</p>
+            <button class="btn-home" onclick="openSlider(7)">Экстренное восстановление →</button>
+        </div>
+
+        <h2>Почему важно защищать персональные данные:</h2>
+        <p>Ваши аккаунты — это не просто профили. Это доступ к личной переписке, фотографиям, контактам, иногда — к банковским картам и рабочим чатам. Утечка данных может привести к шантажу, краже денег, распространению ложной информации от вашего имени.</p>
+
+        <h2>Социальные сети:</h2>
+        <div class="nav-icons">
+            <button class="nav-link" onclick="openSlider(1)">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/VK.com-logo.svg/1200px-VK.com-logo.svg.png" alt="VK" class="nav-icon">
+                <span>VK</span>
+            </button>
+            <button class="nav-link" onclick="openSlider(2)">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_MAX.svg/250px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_MAX.svg.png" alt="MAX" class="nav-icon">
+                <span>MAX</span>
+            </button>
+            <button class="nav-link" onclick="openSlider(3)">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/1200px-Telegram_logo.svg.png" alt="Telegram" class="nav-icon">
+                <span>Telegram</span>
+            </button>
+            <button class="nav-link" onclick="openSlider(4)">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Tiktok_icon.svg/500px-Tiktok_icon.svg.png" alt="TikTok" class="nav-icon">
+                <span>TikTok</span>
+            </button>
+        </div>
+
+        <h2 style="margin-top: 20px; margin-bottom: 15px;">Разделы:</h2>
+        <div class="nav-icons">
+            <button class="nav-link" onclick="openSlider(5)">
+                <img src="https://cdn-icons-png.flaticon.com/512/2098/2098402.png" alt="Тесты" class="nav-icon">
+                <span>Тесты</span>
+            </button>
+            <button class="nav-link" onclick="openSlider(6)">
+                <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="Q&A" class="nav-icon">
+                <span>Q&A</span>
+            </button>
+            <button class="nav-link" onclick="openSlider(8)">
+                <img src="https://cdn-icons-png.flaticon.com/512/2909/2909796.png" alt="Источники" class="nav-icon">
+                <span>Источники</span>
+            </button>
+        </div>
+<!-- ===== СЛАЙДЕР ===== -->
+    <div class="slider-overlay" id="sliderOverlay" onclick="closeSliderOnBackdrop(event)">
+        <div class="slider-container" onclick="event.stopPropagation()">
+            <div class="slider-header">
+                <div class="slider-title" id="sliderTitle">Общие принципы</div>
+                <button class="slider-close" onclick="closeSlider()">×</button>
+            </div>
+            <div class="slider-content" id="sliderContent">
+
+                <!-- Слайд 0: Общие принципы -->
+                <div class="slide" data-title="Общие принципы безопасности">
+                    <h1>Общие принципы безопасности</h1>
+                    <h2>О защите личных данных в цифровой среде:</h2>
+                    <p>Каждая социальная сеть — это отдельная экосистема со своими настройками, но базовые принципы защиты универсальны. Понимание этих принципов поможет вам минимизировать риски на любой платформе.</p>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress0" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-text" id="progressText0">Выполнено: 0 из 6</div>
+
+                    <h2>Общие правила для всех платформ:</h2>
+                    <div class="step" data-step="0-1">
+                        <div class="step-number">1. Уникальные пароли <button class="step-toggle" onclick="toggleStep(this, '0-1')">✓ Готово</button></div>
+                        <p>Не используйте один пароль для нескольких сервисов. Если одна база данных утекает, остальные аккаунты останутся в безопасности.</p>
+                    </div>
+                    <div class="step" data-step="0-2">
+                        <div class="step-number">2. Двухфакторная аутентификация (2FA) <button class="step-toggle" onclick="toggleStep(this, '0-2')">✓ Готово</button></div>
+                        <p>Включайте её везде, где возможно. Это самый эффективный способ защитить аккаунт даже при утечке пароля.</p>
+                    </div>
+                    <div class="step" data-step="0-3">
+                        <div class="step-number">3. Контроль активных сеансов <button class="step-toggle" onclick="toggleStep(this, '0-3')">✓ Готово</button></div>
+                        <p>Регулярно проверяйте, с каких устройств открыт ваш аккаунт. Завершайте сеансы на устройствах, которые вам не принадлежат.</p>
+                    </div>
+                    <div class="step" data-step="0-4">
+                        <div class="step-number">4. Осторожность с подозрительными ссылками <button class="step-toggle" onclick="toggleStep(this, '0-4')">✓ Готово</button></div>
+                        <p>Не переходите по сокращённым ссылкам, не скачивайте файлы от незнакомцев, не вводите данные на поддельных сайтах.</p>
+                    </div>
+                    <div class="step" data-step="0-5">
+                        <div class="step-number">5. Привязка актуальных контактов <button class="step-toggle" onclick="toggleStep(this, '0-5')">✓ Готово</button></div>
+                        <p>Убедитесь, что к аккаунту привязан ваш текущий номер телефона и email — без них восстановление доступа будет сложным.</p>
+                    </div>
+                    <div class="step" data-step="0-6">
+                        <div class="step-number">6. Регулярные проверки <button class="step-toggle" onclick="toggleStep(this, '0-6')">✓ Готово</button></div>
+                        <p>Раз в месяц проходите по чек-листу безопасности: смена паролей, проверка устройств, обновление приложений.</p>
+                    </div>
+                </div>
+
+                <!-- Слайд 1: VK -->
+                <div class="slide" data-title="Безопасность ВКонтакте">
+                    <h1>Безопасность ВКонтакте</h1>
+                    
+                    <p>VK использует комплексную многоуровневую систему защиты: технические средства шифрования, поведенческие механизмы, мониторинг активности и защиту от ботов, спама, фрода и DDoS-атак.</p>
+                    <h3>Ключевые элементы защиты:</h3>
+                    <ul>
+                        <li>Беспарольный вход (OnePass) — вход по одноразовым кодам</li>
+                        <li>Двухфакторная аутентификация (2FA)</li>
+                        <li>Биометрическая аутентификация (Face ID/Touch ID)</li>
+                        <li>Электронный ключ, хранящийся локально</li>
+                        <li>Мониторинг истории входов и подключённых устройств</li>
+                    </ul>
+                    <h2>Пошаговая инструкция: Как защитить аккаунт</h2>
+                    <div class="step" data-step="1-1">
+                        <div class="step-number">Шаг 1. Перейдите на беспарольный вход <button class="step-toggle" onclick="toggleStep(this, '1-1')">✓ Готово</button></div>
+                        <ol>
+                            <li>Откройте приложение ВКонтакте</li>
+                            <li>Настройки → Управление аккаунтом VK ID → Безопасность</li>
+                            <li>В блоке «Способы входа» выберите «Вход по одноразовым кодам»</li>
+                            <li>Выберите способ получения: SMS, push-уведомления, звонок-сброс или приложение-генератор</li>
+                        </ol>
+                    </div>
+                    <div class="step" data-step="1-2">
+                        <div class="step-number">Шаг 2. Подключите 2FA <button class="step-toggle" onclick="toggleStep(this, '1-2')">✓ Готово</button></div>
+                        <ul>
+                            <li>Вариант А: Подтверждение по SMS</li>
+                            <li>Вариант Б: Приложение-генератор кодов (Google Authenticator, Яндекс.Ключ и др.)</li>
+                        </ul>
+                    </div>
+                    <div class="step" data-step="1-3">
+                        <div class="step-number">Шаг 3. Активируйте биометрический вход <button class="step-toggle" onclick="toggleStep(this, '1-3')">✓ Готово</button></div>
+                        <p>Личный кабинет VK ID → Безопасность и вход → Вход по скану лица или отпечатку пальца</p>
+                    </div>
+                    <div class="step" data-step="1-4">
+                        <div class="step-number">Шаг 4. Проверьте активность аккаунта <button class="step-toggle" onclick="toggleStep(this, '1-4')">✓ Готово</button></div>
+                        <p>Безопасность → Устройства и активность → История активности. Удалите незнакомые устройства.</p>
+                    </div>
+                    <div class="step" data-step="1-5">
+                        <div class="step-number">Шаг 5. Проверьте подключённые сервисы <button class="step-toggle" onclick="toggleStep(this, '1-5')">✓ Готово</button></div>
+                        <p>В личном кабинете VK ID отключите все ненужные и подозрительные приложения</p>
+                    </div>
+                    <div class="step" data-step="1-6">
+                        <div class="step-number">Шаг 6. Обновите данные профиля <button class="step-toggle" onclick="toggleStep(this, '1-6')">✓ Готово</button></div>
+                        <p>Актуальный номер телефона, действующий email, реальные имя и фамилия, актуальные фотографии</p>
+                    </div>
+                    <h2>Индивидуальный чек-лист приватности:</h2>
+                    <div class="checklist" id="checklist-vk">
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Скрыть точное время посещения: Настройки → Приватность → Кто видит, что я онлайн → «Только я»</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Закрытый профиль: Настройки → Приватность → Закрытый профиль</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Ограничить письма от незнакомцев</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Проверить список активных сеансов</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Не устанавливать сторонние приложения для «накрутки»</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Раз в месяц: проверять историю активности, подключённые сервисы, актуальность привязанного телефона и почты, обновлять приложение и антивирус</div></div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-vk" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-text" id="progressText-vk">Выполнено: 0 из 6</div>
+                </div>
+
+                <!-- Слайд 2: MAX -->
+                <div class="slide" data-title="Безопасность MAX">
+                    <h1>Безопасность MAX</h1>
+                    
+                    <p>MAX использует единую систему безопасности с VK ID. Защита аккаунта MAX напрямую зависит от защиты вашего VK ID — при компрометации VK страдает и MAX.</p>
+                    <h3>Ключевые элементы защиты:</h3>
+                    <ul>
+                        <li>Единый аккаунт VK ID для авторизации</li>
+                        <li>Двухфакторная аутентификация через настройки VK</li>
+                        <li>Контроль активных сеансов</li>
+                        <li>Управление доступом сторонних приложений</li>
+                    </ul>
+                    <h2>Пошаговая инструкция: Как защитить аккаунт</h2>
+                    <div class="step" data-step="2-1">
+                        <div class="step-number">Шаг 1. Защитите VK ID <button class="step-toggle" onclick="toggleStep(this, '2-1')">✓ Готово</button></div>
+                        <p>Поскольку MAX работает через VK ID, начните с полной защиты VK-аккаунта (см. раздел VK). Включите 2FA, беспарольный вход или биометрию.</p>
+                    </div>
+                    <div class="step" data-step="2-2">
+                        <div class="step-number">Шаг 2. Проверьте привязки в MAX <button class="step-toggle" onclick="toggleStep(this, '2-2')">✓ Готово</button></div>
+                        <ol>
+                            <li>Откройте приложение MAX</li>
+                            <li>Профиль → Настройки → Аккаунт</li>
+                            <li>Убедитесь, что привязан правильный VK ID и номер телефона</li>
+                        </ol>
+                    </div>
+                    <div class="step" data-step="2-3">
+                        <div class="step-number">Шаг 3. Проверьте активные сеансы <button class="step-toggle" onclick="toggleStep(this, '2-3')">✓ Готово</button></div>
+                        <p>В настройках безопасности VK ID просмотрите устройства с доступом к MAX. Завершите сеансы на незнакомых устройствах.</p>
+                    </div>
+                    <div class="step" data-step="2-4">
+                        <div class="step-number">Шаг 4. Настройте приватность профиля <button class="step-toggle" onclick="toggleStep(this, '2-4')">✓ Готово</button></div>
+                        <ul>
+                            <li>Видимость профиля: открытый / только контакты</li>
+                            <li>Скрытие номера телефона от незнакомых пользователей</li>
+                            <li>Ограничение статуса «в сети»</li>
+                        </ul>
+                    </div>
+                    <div class="step" data-step="2-5">
+                        <div class="step-number">Шаг 5. Пройдите квиз «Мошенник не пройдёт» <button class="step-toggle" onclick="toggleStep(this, '2-5')">✓ Готово</button></div>
+                        <p>Встроенная функция в MAX для понимания основных схем обмана</p>
+                    </div>
+                    <h2>Индивидуальный чек-лист приватности:</h2>
+                    <div class="checklist" id="checklist-max">
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Пароль VK ID сложный и уникальный</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>2FA включена в настройках VK</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Активные сеансы проверены и очищены</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Подозрительные устройства удалены</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Сообщения от незнакомцев с ссылками игнорируются и блокируются</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Заявки в друзья от незнакомцев не принимаются без проверки</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>При взломе: сменить пароль VK ID, завершить все сессии, обратиться в поддержку MAX через приложение</div></div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-max" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-text" id="progressText-max">Выполнено: 0 из 7</div>
+                </div>
+
+                <!-- Слайд 3: Telegram -->
+                <div class="slide" data-title="Безопасность Telegram">
+                    <h1>Безопасность Telegram</h1>
+                    
+                    <p>Telegram — один из самых популярных мессенджеров в России, используемый для личного общения, работы и получения новостей. Мессенджер часто взламывают с целью выкупа или шантажа, поэтому защита аккаунта критически важна.</p>
+                    <h3>Ключевые принципы безопасности:</h3>
+                    <ul>
+                        <li>Двухэтапная аутентификация (Облачный пароль)</li>
+                        <li>Скрытие номера телефона</li>
+                        <li>Мониторинг активных устройств с указанием города и времени</li>
+                        <li>Шифрование данных и секретные чаты с end-to-end шифрованием</li>
+                    </ul>
+                    <h2>Пошаговая инструкция: Как защитить аккаунт</h2>
+                    <div class="step" data-step="3-1">
+                        <div class="step-number">Шаг 1. Включите двухэтапную аутентификацию <button class="step-toggle" onclick="toggleStep(this, '3-1')">✓ Готово</button></div>
+                        <ol>
+                            <li>Android: Telegram → ≡ → Настройки → Конфиденциальность и безопасность → Двухэтапная проверка</li>
+                            <li>iPhone: Настройки → Конфиденциальность → Облачный пароль</li>
+                            <li>Установите пароль (минимум 12 символов), добавьте подсказку, укажите email для восстановления</li>
+                            <li>Сохраните резервный код в надёжном месте</li>
+                        </ol>
+                    </div>
+                    <div class="step" data-step="3-2">
+                        <div class="step-number">Шаг 2. Скройте номер телефона <button class="step-toggle" onclick="toggleStep(this, '3-2')">✓ Готово</button></div>
+                        <ul>
+                            <li>Настройки → Конфиденциальность → Номер телефона → «Кто может видеть» — «Никто»</li>
+                            <li>«Кто может найти меня по номеру» — «Мои контакты» или «Никто»</li>
+                        </ul>
+                    </div>
+                    <div class="step" data-step="3-3">
+                        <div class="step-number">Шаг 3. Проверьте активные сеансы <button class="step-toggle" onclick="toggleStep(this, '3-3')">✓ Готово</button></div>
+                        <p>Настройки → Конфиденциальность → Устройства. Удалите все незнакомые устройства, завершите лишние сеансы.</p>
+                    </div>
+                    <div class="step" data-step="3-4">
+                        <div class="step-number">Шаг 4. Настройте приватность профиля <button class="step-toggle" onclick="toggleStep(this, '3-4')">✓ Готово</button></div>
+                        <ul>
+                            <li>Скрыть фото профиля: «Мои контакты»</li>
+                            <li>Скрыть статус онлайн: «Никто»</li>
+                            <li>Отключить пересылку сообщений с ссылкой на аккаунт</li>
+                        </ul>
+                    </div>
+                    <div class="step" data-step="3-5">
+                        <div class="step-number">Шаг 5. Ограничите добавление в группы <button class="step-toggle" onclick="toggleStep(this, '3-5')">✓ Готово</button></div>
+                        <p>Настройки → Конфиденциальность → Группы и каналы → «Мои контакты» или «Никто»</p>
+                    </div>
+                    <div class="step" data-step="3-6">
+                        <div class="step-number">Шаг 6. Настройте звонки <button class="step-toggle" onclick="toggleStep(this, '3-6')">✓ Готово</button></div>
+                        <ul>
+                            <li>Настройки → Конфиденциальность → Звонки → «Мои контакты» или «Никто»</li>
+                            <li>Отключите Peer-to-Peer для скрытия IP-адреса</li>
+                        </ul>
+                    </div>
+                    <div class="step" data-step="3-7">
+                        <div class="step-number">Шаг 7. Отключите синхронизацию контактов <button class="step-toggle" onclick="toggleStep(this, '3-7')">✓ Готово</button></div>
+                        <p>Настройки → Конфиденциальность → Синхронизация контактов — выключить</p>
+                    </div>
+                    <h2>Индивидуальный чек-лист приватности:</h2>
+                    <div class="checklist" id="checklist-tg">
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Облачный пароль установлен, резервный email указан, резервный код сохранён</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Номер телефона скрыт, поиск по номеру ограничен</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Активные сеансы проверены и очищены</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Последняя активность скрыта, фото профиля доступно только контактам</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Пересылка сообщений не создаёт ссылку на аккаунт</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Звонки ограничены, Peer-to-Peer отключён</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Добавление в группы ограничено</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Раз в месяц: проверка сеансов, обновление приложения, проверка настроек приватности</div></div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-tg" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-text" id="progressText-tg">Выполнено: 0 из 8</div>
+                    <h3>Дополнительно:</h3>
+                    <ul>
+                        <li>Не покупайте аккаунты с рук</li>
+                        <li>Не используйте подозрительных ботов</li>
+                        <li>Не авторизуйтесь на неизвестных сайтах через Telegram</li>
+                        <li>Используйте секретные чаты для важной переписки</li>
+                        <li>Никому не сообщайте коды из SMS</li>
+                    </ul>
+                </div>
+
+                <!-- Слайд 4: TikTok -->
+                <div class="slide" data-title="Безопасность TikTok">
+                    <h1>Безопасность TikTok</h1>
+                    
+                    <p>TikTok использует многоуровневую систему защиты с техническими средствами и поведенческими механизмами. Встроенная функция «Проверка безопасности» помогает усилить защиту аккаунта пошагово.</p>
+                    <h3>Ключевые элементы защиты:</h3>
+                    <ul>
+                        <li>Проверка безопасности (встроенная функция)</li>
+                        <li>Двухэтапная верификация</li>
+                        <li>Ключи входа (Passkeys) через Face ID/Touch ID</li>
+                        <li>Управление доверенными устройствами</li>
+                        <li>Мониторинг активности за 30 дней</li>
+                    </ul>
+                    <h2>Пошаговая инструкция: Как защитить аккаунт</h2>
+                    <div class="step" data-step="4-1">
+                        <div class="step-number">Шаг 1. Выполните «Проверку безопасности» <button class="step-toggle" onclick="toggleStep(this, '4-1')">✓ Готово</button></div>
+                        <ol>
+                            <li>Профиль → Меню (☰) → Настройки и конфиденциальность → Безопасность и разрешения → Проверка безопасности</li>
+                            <li>Выполните все шаги: привяжите телефон и email, включите 2FA, проверьте устройства, просмотрите активность, добавьте ключ входа</li>
+                        </ol>
+                    </div>
+                    <div class="step" data-step="4-2">
+                        <div class="step-number">Шаг 2. Привяжите номер телефона и email <button class="step-toggle" onclick="toggleStep(this, '4-2')">✓ Готово</button></div>
+                        <p>Рекомендуется привязать два способа связи для альтернативного восстановления</p>
+                    </div>
+                    <div class="step" data-step="4-3">
+                        <div class="step-number">Шаг 3. Создайте надёжный пароль <button class="step-toggle" onclick="toggleStep(this, '4-3')">✓ Готово</button></div>
+                        <ul>
+                            <li>12–15 символов, буквы разного регистра, цифры, символы</li>
+                            <li>Регулярно меняйте (каждые 30 дней)</li>
+                            <li>Не используйте персональные данные</li>
+                        </ul>
+                    </div>
+                    <div class="step" data-step="4-4">
+                        <div class="step-number">Шаг 4. Включите двухэтапную верификацию <button class="step-toggle" onclick="toggleStep(this, '4-4')">✓ Готово</button></div>
+                        <p>Профиль → Меню → Настройки и конфиденциальность → Безопасность → Двухэтапная верификация. Выберите минимум 2 способа: SMS, email, пароль.</p>
+                    </div>
+                    <div class="step" data-step="4-5">
+                        <div class="step-number">Шаг 5. Настройте ключ входа (Passkey) <button class="step-toggle" onclick="toggleStep(this, '4-5')">✓ Готово</button></div>
+                        <p>Профиль → Меню → Настройки → Безопасность → Ключ входа. Используйте биометрию устройства.</p>
+                    </div>
+                    <div class="step" data-step="4-6">
+                        <div class="step-number">Шаг 6. Проверьте доверенные устройства <button class="step-toggle" onclick="toggleStep(this, '4-6')">✓ Готово</button></div>
+                        <p>Профиль → Меню → Настройки → Безопасность → Управление устройствами. Удалите незнакомые устройства, при обнаружении чужих — срочно смените пароль.</p>
+                    </div>
+                    <div class="step" data-step="4-7">
+                        <div class="step-number">Шаг 7. Отключите сохранение логина <button class="step-toggle" onclick="toggleStep(this, '4-7')">✓ Готово</button></div>
+                        <p>Профиль → Меню → Безопасность → отключите «Сохранить логин и пароль»</p>
+                    </div>
+                    <h2>Индивидуальный чек-лист приватности:</h2>
+                    <div class="checklist" id="checklist-tiktok">
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Проверка безопасности выполнена (все шаги с галочками)</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Привязаны телефон и email</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Пароль надёжный, 2FA включена (минимум 2 способа)</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Ключ входа настроен через биометрию</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Доверенные устройства проверены и очищены</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Приватный аккаунт включён (при необходимости)</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Скачивание видео отключено, дуэты и сшивание ограничены</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Комментарии фильтруются от спама, добавлены стоп-слова</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Личные сообщения ограничены, звонки ограничены</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div>Раз в месяц: проверка устройств, просмотр активности, обновление приложения, смена пароля</div></div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-tiktok" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-text" id="progressText-tiktok">Выполнено: 0 из 10</div>
+                    <h3>Дополнительно:</h3>
+                    <ul>
+                        <li>Не используйте сервисы для «накрутки»</li>
+                        <li>Не переходите по подозрительным ссылкам</li>
+                        <li>Будьте осторожны с фейковыми розыгрышами</li>
+                        <li>TikTok никогда не просит пароль в личных сообщениях</li>
+                    </ul>
+                </div>
+
+                <!-- Слайд 5: Тесты -->
+                <div class="slide" data-title="Сборник чек-листов">
+                    <h1>Сборник чек-листов безопасности</h1>
+                    <h2>Общий чек-лист «Быстрый аудит» (для всех платформ):</h2>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-audit" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-text" id="progressText-audit">Выполнено: 0 из 7</div>
+                    <table>
+                        <tr>
+                            <th>№</th>
+                            <th>Проверка</th>
+                            <th>Статус</th>
+                        </tr>
+                        <tr><td>1</td><td>Пароль уникальный (не используется на других сайтах)</td><td><div class="checkbox" onclick="toggleTableCheck(this, 'audit')"></div></td></tr>
+                        <tr><td>2</td><td>Двухфакторная аутентификация (2FA) включена</td><td><div class="checkbox" onclick="toggleTableCheck(this, 'audit')"></div></td></tr>
+                        <tr><td>3</td><td>Привязан актуальный номер телефона и резервный email</td><td><div class="checkbox" onclick="toggleTableCheck(this, 'audit')"></div></td></tr>
+                        <tr><td>4</td><td>Просмотрен список активных сессий — нет посторонних</td><td><div class="checkbox" onclick="toggleTableCheck(this, 'audit')"></div></td></tr>
+                        <tr><td>5</td><td>Отключены неиспользуемые сторонние приложения и боты</td><td><div class="checkbox" onclick="toggleTableCheck(this, 'audit')"></div></td></tr>
+                        <tr><td>6</td><td>Настроены уведомления о входах с новых устройств</td><td><div class="checkbox" onclick="toggleTableCheck(this, 'audit')"></div></td></tr>
+                        <tr><td>7</td><td>Резервные коды восстановления сохранены в надёжном месте</td><td><div class="checkbox" onclick="toggleTableCheck(this, 'audit')"></div></td></tr>
+                    </table>
+
+                    <h2>Интерактивный тест: Что делать при взломе?</h2>
+                    <p>Выберите правильный порядок действий:</p>
+                    <button class="interactive-btn quiz-option" onclick="checkQuiz(this, 1)">1. Сменить пароль → 2. Завершить сессии → 3. Включить 2FA → 4. Проверить привязки</button>
+                    <button class="interactive-btn quiz-option" onclick="checkQuiz(this, 2)">1. Написать друзьям → 2. Сменить пароль → 3. Удалить аккаунт → 4. Создать новый</button>
+                    <button class="interactive-btn quiz-option" onclick="checkQuiz(this, 3)">1. Подождать → 2. Надеяться на лучшее → 3. Забыть → 4. Ничего не делать</button>
+                    <div class="quiz-feedback" id="quiz-feedback"></div>
+                </div>
+
+                <!-- Слайд 6: Q&A -->
+                <div class="slide" data-title="Ответы на частые вопросы">
+                    <h1>Ответы на частые вопросы</h1>
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question">Вопрос 1: Что делать, если я забыл пароль и не могу восстановить доступ через почту/телефон?</div>
+                        <div class="faq-answer"><p>Обратитесь в службу поддержки социальной сети. Для VK подготовьте скан паспорта, старые фото профиля и примерную дату регистрации. Для TikTok — ссылки на видео, никнейм, примерную дату регистрации. Процесс восстановления может занять несколько дней.</p></div>
+                    </div>
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question">Вопрос 2: Обязательно ли включать двухфакторную аутентификацию?</div>
+                        <div class="faq-answer"><p>Да. Это самый эффективный способ защитить аккаунт. Даже если злоумышленник узнает ваш пароль, без доступа к вашему телефону он не сможет войти.</p></div>
+                    </div>
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question">Вопрос 3: Безопасен ли беспарольный вход в VK?</div>
+                        <div class="faq-answer"><p>По данным VK, беспарольный вход (OnePass) безопаснее традиционного пароля. Исключается риск кражи, подбора или утечки пароля. Рекомендуется использовать push-уведомления или приложение-генератор вместо SMS.</p></div>
+                    </div>
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question">Вопрос 4: Что такое SIM-swap атака и как от неё защититься?</div>
+                        <div class="faq-answer"><p>Это мошенничество, при котором злоумышленник переносит ваш номер телефона на свою SIM-карту. Защита: установите PIN-код на SIM-карту, используйте приложение-аутентификатор вместо SMS для 2FA, при подозрении немедленно звоните оператору.</p></div>
+                    </div>
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question">Вопрос 5: Можно ли восстановить удалённые сообщения или фото после взлома?</div>
+                        <div class="faq-answer"><p>В VK — через функцию «Мои данные» можно запросить архив. В Telegram — облачные чаты хранят историю, секретные чаты — нет. В TikTok — обратитесь в поддержку. Лучшее решение — регулярное резервное копирование важных данных.</p></div>
+                    </div>
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question">Вопрос 6: Как отличить официальную поддержку от мошенников?</div>
+                        <div class="faq-answer"><p>Официальная поддержка никогда не пишет первой, не просит пароли, коды из SMS или данные карты. В Telegram официальный аккаунт только @Telegram. В VK — обращение только через <a href="https://vk.com/support" target="_blank">vk.com/support</a>.</p></div>
+                    </div>
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question">Вопрос 7: Что делать, если от моего имени рассылают спам?</div>
+                        <div class="faq-answer"><p>Срочно смените пароль, завершите все сессии, включите 2FA, проверьте подключённые приложения. Предупредите друзей, что аккаунт был скомпрометирован. Удалите спам-сообщения и публикации.</p></div>
+                    </div>
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question">Вопрос 8: Нужен ли антивирус на телефоне?</div>
+                        <div class="faq-answer"><p>Да. Мобильные трояны и кейлоггеры — реальная угроза. Используйте проверенные антивирусные решения, не устанавливайте приложения из неофициальных источников.</p></div>
+                    </div>
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question">Вопрос 9: Как часто менять пароли?</div>
+                        <div class="faq-answer"><p>Рекомендуется менять пароли каждые 3–6 месяцев и сразу после подозрения на взлом. Используйте менеджер паролей для генерации и хранения сложных уникальных паролей.</p></div>
+                    </div>
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question">Вопрос 10: Что такое фишинг и как его распознать?</div>
+                        <div class="faq-answer"><p>Фишинг — поддельные сайты/сообщения, имитирующие официальные сервисы. Признаки: странные домены (vkk.com вместо vk.com), срочные требования перейти по ссылке, просьбы ввести пароль или код. Всегда проверяйте адрес сайта.</p></div>
+                    </div>
+                </div>
+
+                <!-- Слайд 7: Взлом -->
+                <div class="slide" data-title="Экстренное восстановление">
+                    <h1>Экстренное восстановление доступа</h1>
+                    <div class="step" data-step="7-1">
+                        <div class="step-number">Шаг 1. Проверьте, действительно ли это взлом <button class="step-toggle" onclick="toggleStep(this, '7-1')">✓ Готово</button></div>
+                        <p>Если не можете войти — попробуйте восстановить пароль через «Забыли пароль?». Если почта или телефон привязаны к чужим номерам — взлом подтверждён.</p>
+                    </div>
+                    <div class="step" data-step="7-2">
+                        <div class="step-number">Шаг 2. Восстановите доступ <button class="step-toggle" onclick="toggleStep(this, '7-2')">✓ Готово</button></div>
+                        <ul>
+                            <li><strong>VK:</strong> <a href="https://vk.com/restore" target="_blank">vk.com/restore</a> — укажите ссылку на профиль, старый телефон/почту, отвечайте на вопросы службы поддержки.</li>
+                            <li><strong>MAX:</strong> восстановление идёт через общий аккаунт VK. Если взломан VK — MAX восстанавливается автоматически.</li>
+                            <li><strong>TikTok:</strong> в приложении «Нет доступа?» → подтвердите личность через привязанный телефон или почту. Если злоумышленник сменил привязки — пишите в поддержку через форму обратной связи.</li>
+                            <li><strong>Telegram:</strong> Settings → Devices → Terminate All Other Sessions. Если не можете войти — переустановите приложение, введите номер телефона, дождитесь СМС. Если СМС не приходит — обратитесь к оператору связи (возможна SIM-swap атака).</li>
+                        </ul>
+                    </div>
+                    <h2>Тест после восстановления:</h2>
+                    <div class="checklist" id="checklist-hacked">
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div><strong>Смена паролей.</strong> Придумайте уникальный пароль из 12+ символов. Обновите пароль от привязанной почты и от телефона/оператора связи.</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div><strong>Завершение сеансов.</strong> Завершите все сессии на других устройствах во всех соцсетях.</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div><strong>Проверьте привязки.</strong> Убедитесь, что почта и телефон принадлежат вам. Удалите чужие устройства и подозрительные приложения с доступом.</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div><strong>Включите 2FA.</strong> Добавьте двухфакторную аутентификацию везде, где это возможно.</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div><strong>Обратитесь в поддержку.</strong> Сообщите платформе о взломе через официальные каналы.</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div><strong>Проверьте активность.</strong> Просмотрите последние действия: сообщения, публикации, платежи. Удалите всё, что сделал злоумышленник. Предупредите друзей о компрометации аккаунта.</div></div>
+                        <div class="checklist-item" onclick="toggleCheck(this)"><div class="checkbox"></div><div><strong>Дополнительные меры.</strong> Просканируйте устройство антивирусом. Не вводите пароли на чужих компьютерах. Будьте осторожны с фишинговыми ссылками.</div></div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-hacked" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-text" id="progressText-hacked">Выполнено: 0 из 7</div>
+                    <h2>Если не удалось восстановить доступ самостоятельно:</h2>
+                    <ul>
+                        <li><strong>Для VK и MAX:</strong> подготовьте скан паспорта, старые фото профиля, дату регистрации.</li>
+                        <li><strong>Для TikTok:</strong> сохраните ссылки на видео, никнейм, примерную дату регистрации.</li>
+                        <li><strong>Для Telegram:</strong> если SIM-карта украдена — сначала заблокируйте её у оператора, затем обращайтесь в поддержку Telegram.</li>
+                    </ul>
+                </div>
+
+                <!-- Слайд 8: Источники -->
+                <div class="slide" data-title="Источники и справочные материалы">
+                    <h1>Источники и справочные материалы</h1>
+                    <h2>Официальные справки социальных сетей:</h2>
+                    <ul>
+                        <li><a href="https://vk.com/support" target="_blank" class="source-link">VK. Справочный центр: vk.com/support</a></li>
+                        <li><a href="https://vk.com/faq12101" target="_blank" class="source-link">VK. Безопасность аккаунта: vk.com/faq12101</a></li>
+                        <li><a href="https://id.vk.com/about" target="_blank" class="source-link">VK ID. Управление безопасностью: id.vk.com/about</a></li>
+                        <li><a href="https://telegram.org/faq" target="_blank" class="source-link">Telegram. FAQ: telegram.org/faq</a></li>
+                        <li><span class="source-link">Telegram. Восстановление доступа: recovery@telegram.org</span></li>
+                        <li><a href="https://www.tiktok.com/safety" target="_blank" class="source-link">TikTok. Центр безопасности: tiktok.com/safety</a></li>
+                        <li><a href="https://support.tiktok.com" target="_blank" class="source-link">TikTok. Справочный центр: support.tiktok.com</a></li>
+                    </ul>
+                    <h2>Рекомендуемые приложения для 2FA:</h2>
+                    <ul>
+                        <li>Google Authenticator</li>
+                        <li>Microsoft Authenticator</li>
+                        <li>Authy</li>
+                        <li>Яндекс.Ключ</li>
+                    </ul>
+                    <h2>Полезные ресурсы:</h2>
+                    <ul>
+                        <li><a href="https://kaspersky.ru" target="_blank" class="source-link">Касперский: kaspersky.ru — антивирусная защита</a></li>
+                        <li><a href="https://drweb.ru" target="_blank" class="source-link">Dr.Web: drweb.ru</a></li>
+                        <li><a href="https://haveibeenpwned.com" target="_blank" class="source-link">Have I Been Pwned: haveibeenpwned.com — проверка утечек данных</a></li>
+                    </ul>
+                    <h2>Литература и методические материалы:</h2>
+                    <ul>
+                        <li>Руководства по кибербезопасности для пользователей социальных сетей</li>
+                        <li>Материалы Роскомнадзора по защите персональных данных</li>
+                        <li>Рекомендации ЦБ РФ по безопасности в интернете</li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="slider-nav">
+                <button class="slider-arrow" id="prevBtn" onclick="prevSlide()">‹</button>
+                <div class="slider-dots" id="sliderDots"></div>
+                <button class="slider-arrow" id="nextBtn" onclick="nextSlide()">›</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== СЛАЙДЕР =====
+        const slides = document.querySelectorAll('.slide');
+        const sliderTitle = document.getElementById('sliderTitle');
+        const sliderOverlay = document.getElementById('sliderOverlay');
+        const sliderDots = document.getElementById('sliderDots');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentSlide = 0;
+
+        // Создаём точки навигации
+        slides.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.className = 'slider-dot';
+            dot.onclick = () => goToSlide(index);
+            sliderDots.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function updateSlider() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+            sliderTitle.textContent = slides[currentSlide].dataset.title;
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === slides.length - 1;
+            document.getElementById('sliderContent').scrollTop = 0;
+        }
+
+        function openSlider(index) {
+            currentSlide = index;
+            updateSlider();
+            sliderOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSlider() {
+            sliderOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeSliderOnBackdrop(event) {
+            if (event.target === sliderOverlay) {
+                closeSlider();
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                updateSlider();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlider();
+            }
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        // ===== ИНТЕРАКТИВНЫЕ ФУНКЦИИ =====
+
+        // Переключение чекбоксов в чек-листах
+        function toggleCheck(element) {
+            element.classList.toggle('completed');
+            updateProgressFromChecklist(element.closest('.checklist'));
+        }
+
+        // Обновление прогресса из чек-листа
+        function updateProgressFromChecklist(checklist) {
+            if (!checklist) return;
+            const items = checklist.querySelectorAll('.checklist-item');
+            const completed = checklist.querySelectorAll('.checklist-item.completed').length;
+            const total = items.length;
+            const percent = total > 0 ? (completed / total * 100) : 0;
+
+            const slide = checklist.closest('.slide');
+            const progressBar = slide.querySelector('.progress-fill');
+            const progressText = slide.querySelector('.progress-text');
+
+            if (progressBar) progressBar.style.width = percent + '%';
+            if (progressText) progressText.textContent = `Выполнено: ${completed} из ${total}`;
+        }
+
+        // Переключение шагов
+        function toggleStep(btn, stepId) {
+            const step = document.querySelector(`[data-step="${stepId}"]`);
+            if (!step) return;
+
+            step.classList.toggle('active-step');
+            const isDone = step.classList.contains('active-step');
+            btn.textContent = isDone ? '✓ Выполнено' : '✓ Готово';
+            btn.classList.toggle('done', isDone);
+
+            const slide = step.closest('.slide');
+            const allSteps = slide.querySelectorAll('.step');
+            const doneSteps = slide.querySelectorAll('.step.active-step');
+            const progressBar = slide.querySelector('.progress-fill');
+            const progressText = slide.querySelector('.progress-text');
+
+            if (progressBar && allSteps.length > 0) {
+                progressBar.style.width = (doneSteps.length / allSteps.length * 100) + '%';
+            }
+            if (progressText) {
+                progressText.textContent = `Выполнено: ${doneSteps.length} из ${allSteps.length}`;
+            }
+        }
+
+        // Переключение FAQ
+        function toggleFaq(item) {
+            item.classList.toggle('open');
+        }
+
+        // Переключение чекбоксов в таблице
+        function toggleTableCheck(checkbox, listId) {
+            checkbox.closest('tr').classList.toggle('completed');
+            const isChecked = checkbox.closest('tr').classList.contains('completed');
+            checkbox.classList.toggle('completed', isChecked);
+
+            if (listId === 'audit') {
+                const table = checkbox.closest('table');
+                const rows = table.querySelectorAll('tr:not(:first-child)');
+                const checked = table.querySelectorAll('tr.completed').length;
+                const progressBar = document.getElementById('progress-audit');
+                const progressText = document.getElementById('progressText-audit');
+
+                if (progressBar) progressBar.style.width = (checked / rows.length * 100) + '%';
+                if (progressText) progressText.textContent = `Выполнено: ${checked} из ${rows.length}`;
+            }
+        }
+
+        // Квиз
+        function checkQuiz(btn, answer) {
+            const feedback = document.getElementById('quiz-feedback');
+            const buttons = document.querySelectorAll('.quiz-option');
+
+            buttons.forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+
+            feedback.className = 'quiz-feedback';
+
+            if (answer === 1) {
+                feedback.classList.add('correct');
+                feedback.innerHTML = '<strong>✓ Правильно!</strong> Сначала смените пароль, затем завершите все сессии, включите 2FA и проверьте привязки. Это базовый порядок действий при взломе.';
+            } else if (answer === 2) {
+                feedback.classList.add('wrong');
+                feedback.innerHTML = '<strong>✗ Неправильно.</strong> Удалять аккаунт и создавать новый — не решение. Сначала нужно восстановить доступ и защитить текущий аккаунт.';
+            } else {
+                feedback.classList.add('wrong');
+                feedback.innerHTML = '<strong>✗ Неправильно.</strong> Бездействие только усугубит ситуацию. Нужно действовать немедленно!';
+            }
+        }
+
+        // Клавиатурная навигация
+        document.addEventListener('keydown', (e) => {
+            if (!sliderOverlay.classList.contains('active')) return;
+            if (e.key === 'Escape') closeSlider();
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        // Свайп на мобильных
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const sliderContent = document.getElementById('sliderContent');
+
+        sliderContent.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        sliderContent.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        }
+    </script>
+</body>
+</html>
